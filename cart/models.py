@@ -32,7 +32,6 @@ class CartRules(models.Model):
     discount_type = models.CharField(_("Discount Type"),choices=TYPE_OF_DISCOUNT, max_length=1, default=0)
     reduction_amount = models.DecimalField(_("Reduction Amount"), max_digits=13, decimal_places=2, default=Decimal('0'))
     
-
     customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
     gift_product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
     reduction_currency = models.ForeignKey(Currencies, on_delete=models.DO_NOTHING, related_name="reduction_currency")
@@ -43,7 +42,6 @@ class CartRules(models.Model):
 
     class Meta:
         db_table = 'cart_rules'
-        
 
 class CartRulesCustomers(models.Model):
     cart_rule = models.ForeignKey(CartRules, on_delete=models.DO_NOTHING)
