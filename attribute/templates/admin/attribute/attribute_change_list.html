@@ -1,0 +1,8 @@
+{% extends 'admin/change_list.html' %}
+{% block object-tools%}
+    <form id="attribute-form" method="POST">
+        {% csrf_token %}
+        <input name="attribute" class="vTextField" type="text">
+    </form>
+    {{ block.super }}
+{% endblock object-tools %}
