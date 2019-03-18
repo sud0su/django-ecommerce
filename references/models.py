@@ -83,3 +83,4 @@ class Notifications(models.Model):
     
     class Meta:
         db_table = 'notifications'
+

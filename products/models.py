@@ -59,3 +59,21 @@ class CategoryProduct(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+class SpesificPrice(models.Model):
+    reduction = models.DecimalField(_("Reduction"), max_digits=13, decimal_places=2, default=Decimal('0'))
+    DISCOUNT_TYPE = (
+        (0, 'Ammount'),
+        (1, 'Percent'),
+    )
+    discount_type = models.CharField(_("Discount Type"),choices=DISCOUNT_TYPE, max_length=1, default=0)
+    start_date = models.DateTimeField(_("Start Date"),auto_now=True, editable=True)
+    expiration_date = models.DateTimeField(_("Expiration Date"))
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        db_table = 'spesific_prices'
+

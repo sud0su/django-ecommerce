@@ -32,7 +32,6 @@ class Orders(models.Model):
     total = models.DecimalField(_("Total"), max_digits=13, decimal_places=2, blank=True)
     total_tax = models.DecimalField(_("Total Tax"), max_digits=13, decimal_places=2, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
     currency = models.ForeignKey(Currencies, on_delete=models.DO_NOTHING)

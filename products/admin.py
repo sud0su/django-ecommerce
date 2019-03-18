@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, ProductImages, AttributeProductValue
+from .models import Product, ProductImages, AttributeProductValue, SpesificPrice
 # Register your models here.
 
 class ProductImagesTabular(admin.TabularInline):
@@ -12,8 +12,14 @@ class AttributeProductValueTabular(admin.TabularInline):
     extra  = 0
     min_num = 1
 
+class SpesificPriceTabular(admin.TabularInline):
+    model = SpesificPrice
+    extra  = 0
+    min_num = 1
+
+
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [ProductImagesTabular, AttributeProductValueTabular]
+    inlines = [ProductImagesTabular, AttributeProductValueTabular, SpesificPriceTabular]
 
     class Meta:
         model = Product    

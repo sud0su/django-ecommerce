@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'references',
     'products',
     'orders',
+    'cart',
 ]
 
 AUTH_USER_MODEL = 'users.Profile'
