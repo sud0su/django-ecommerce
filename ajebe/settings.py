@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     # added by razinal
     # utils
     'nested_admin',
+    'webpack_loader',
+    'rest_framework',
     # apps
     'users.apps.UsersConfig',
     'carriers',
@@ -133,5 +135,27 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
+
+# Added by razinal
+# Webpack loader settings
+WEBPACK_LOADER = {
+    'DEFAULT':{
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': '',
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend/webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js','.+\.map']
+    }
+} 
+
+# Rest config
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
