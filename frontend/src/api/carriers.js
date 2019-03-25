@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { resolve } from 'path';
-import { rejects } from 'assert';
+import { resolve } from 'path'
+import { rejects } from 'assert'
 
 export default {
     fetchCarriers(method, params, data) {

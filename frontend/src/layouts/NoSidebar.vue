@@ -13,10 +13,9 @@ export default {
 <template>
     <div>
         <nav-bar />
-        <div class="container">
+        <!-- <div class="container"> -->
             <slot />
-        </div>
-
+        <!-- </div> -->
         <footer-bar />
     </div>
 </template>

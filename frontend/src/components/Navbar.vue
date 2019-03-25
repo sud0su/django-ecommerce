@@ -36,7 +36,7 @@
               </router-link>
             </div>
             <div class="navbar-item">
-              <router-link class="button is-success is-outlined" :to="{name: '#'}" @click.native="open = false">
+              <router-link class="button is-success is-outlined" :to="{name: 'login'}" @click.native="open = false">
                 Login
               </router-link>
             </div>
@@ -44,7 +44,7 @@
             <div class="is-divider-vertical" data-content="OR"></div>
 
             <div class="navbar-item">
-              <router-link class="button is-danger is-outlined" :to="{name: '#'}" @click.native="open = false">
+              <router-link class="button is-danger is-outlined" :to="{name: 'login'}" @click.native="open = false">
                 Register
               </router-link>
             </div>
@@ -87,10 +87,17 @@ export default {
 </script>
 
 <style lang="scss">
+$navbar-height: 1.5rem;
+@import "~bulma/bulma";
+@import '~bulma-divider';
+
 .primarynav {
   border-bottom: solid 1px #f3f3f3
 }
-
+.secondarynav a {    
+    color: #636363;
+    font-size: 14px;
+}
 .navbar {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
@@ -98,5 +105,4 @@ export default {
 .search, .search > .control {
   width: 100%;
 }
-
 </style>

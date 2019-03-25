@@ -1,14 +1,4 @@
-$navbar-height: 1.5rem;
 @import "~bulma/bulma";
-
-$divider-font-size: $size-7;
-@import '~bulma-divider';
-
 body {
     background: $light;
-}
-
-.secondarynav a {    
-    color: #636363;
-    font-size: 14px;
 }

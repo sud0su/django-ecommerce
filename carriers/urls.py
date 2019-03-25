@@ -1,10 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from . import views
-
-router = DefaultRouter()
-router.register(r'carriers', views.CarrierViewSet) 
+from django.urls import path
+from .views import *
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', CarrierList.as_view()),
+    path('create/', CarrierCreate.as_view()),
+    path('update/<int:pk>/', CarrierRetrieveUpdate.as_view()),
 ]

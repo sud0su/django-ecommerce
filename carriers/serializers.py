@@ -57,6 +57,7 @@ class CarriersSerializer(serializers.ModelSerializer):
     logo = Base64ImageField(
         max_length=None, use_url=True,
     )
+    """ A serializer class for the User model """
     class Meta:
         model = Carrier
         fields = "__all__"
