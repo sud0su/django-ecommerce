@@ -18,15 +18,6 @@ Vue.component('login-layout', Login)
 
 require("./assets/main.scss")
 
-
-// new Vue({
-//   el: '#app',
-//   router,
-//   store,
-//   render: h => h(App)
-// })
-
-
 export default new Vue({
   router,
   store,
