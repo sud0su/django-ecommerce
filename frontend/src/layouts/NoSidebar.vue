@@ -1,21 +1,21 @@
 <script>
-import NavBar from '@/components/Navbar'
-import FooterBar from '@/components/Footer'
+import { mapGetters } from 'vuex';
+import Navbar from '@/layouts/components/Navbar'
+import FooterBar from '@/layouts/components/Footer'
 
 export default {
     components: {
-        NavBar,
+        Navbar,
         FooterBar
-    }
+    },
+    computed: mapGetters('auth', ['isAuthenticated',]),
 }
 </script>
 
 <template>
     <div>
-        <nav-bar />
-        <!-- <div class="container"> -->
+        <navbar></navbar>
             <slot />
-        <!-- </div> -->
         <footer-bar />
     </div>
 </template>

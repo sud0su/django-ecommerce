@@ -1,20 +1,22 @@
 <script>
-import NavBar from '@/components/Navbar'
-import FooterBar from '@/components/Footer'
-import SideBar from '@/components/Sidebar'
+import { mapGetters } from 'vuex';
+import Navbar from '@/layouts/components/Navbar'
+import FooterBar from '@/layouts/components/Footer'
+import SideBar from '@/layouts/components/Sidebar'
 
 export default {
     components: {
-        NavBar,
+        Navbar,
         FooterBar,
         SideBar
-    }
+    },
+    computed: mapGetters('auth', ['isAuthenticated',]),
 }
 </script>
 
 <template>
     <div>
-        <nav-bar />
+        <navbar></navbar>
         <div class="container section">
             <div class="columns">
                 <div class="column is-8">

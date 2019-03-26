@@ -1,8 +1,7 @@
-from rest_framework import serializers
+from rest_framework.serializers import HyperlinkedIdentityField, HyperlinkedRelatedField, ModelSerializer, ImageField
 from .models import Carrier
 
-
-class Base64ImageField(serializers.ImageField):
+class Base64ImageField(ImageField):
     """
     A Django REST framework field for handling image-uploads through raw post data.
     It uses base64 for encoding and decoding the contents of the file.
@@ -53,7 +52,7 @@ class Base64ImageField(serializers.ImageField):
         return extension
 
 
-class CarriersSerializer(serializers.ModelSerializer):
+class CarriersSerializer(ModelSerializer):
     logo = Base64ImageField(
         max_length=None, use_url=True,
     )

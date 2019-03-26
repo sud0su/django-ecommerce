@@ -14,18 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import include, url
+from django.urls import path, re_path, include
 from django.views.generic import TemplateView
-from rest_framework_jwt.views import obtain_jwt_token
+
 # Admin site config
 # admin.site.site_header = "PyShop aJeBe"
 admin.site.site_title = "Admin AJeBe"
 
 urlpatterns = [
     path('',TemplateView.as_view(template_name='index.html')),
-    path('api/carriers/', include('carriers.urls')),
+    # apps-api
+    re_path('api/(?P<version>(v1|v2))/carriers/', include('carriers.urls')),
+    # rest-framework
+    path('auth/', include('rest_auth.urls')),
+    path('registration/', include('rest_auth.registration.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # admin site,
     path('admin/', admin.site.urls),
-    path('auth/', obtain_jwt_token),
-    url(r'^nested_admin/', include('nested_admin.urls')),
+    path('nested_admin/', include('nested_admin.urls')),
 ]

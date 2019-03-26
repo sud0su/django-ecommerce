@@ -1,34 +1,36 @@
-import Vue from 'vue'
-import axios from 'axios'
-import App from './App.vue'
-import router from './router/index'
-import VueSession from 'vue-session'
+import Vue from 'vue';
 import Vuelidate from 'vuelidate'
 
-// import store from './store/index'
+import App from './App';
+import router from './router';
+import store from './store';
 // layout
 import Default from './layouts/Default.vue'
 import NoSidebar from './layouts/NoSidebar.vue'
 import Login from './layouts/Login.vue'
 
-Vue.use(VueSession)
 Vue.use(Vuelidate)
+Vue.config.productionTip = false;
+
 Vue.component('default-layout', Default)
 Vue.component('no-sidebar-layout', NoSidebar)
 Vue.component('login-layout', Login)
 
-Vue.config.productionTip = false
-
 require("./assets/main.scss")
 
-new Vue({
-  el: '#app',
-  beforeCreate () {
-    Vue.prototype.$http = axios
-    axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-    axios.defaults.xsrfCookieName = 'csrftoken'
-  },
+
+// new Vue({
+//   el: '#app',
+//   router,
+//   store,
+//   render: h => h(App)
+// })
+
+
+export default new Vue({
   router,
-  // store,
-  render: h => h(App)
-})
+  store,
+  el: '#app',
+  template: '<App/>',
+  components: { App },
+});

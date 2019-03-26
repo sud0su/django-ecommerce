@@ -31,7 +31,7 @@
                 <button class="button is-primary is-rounded" :disabled="!valid">Login</button>
             </p>
             <p class="control">
-                <a class="forgot-link" >Forgot Password</a>
+                <a class="forgot-link" ><router-link to="/password_reset">Reset Password</router-link></a>
             </p>
             </div>
         </form>
@@ -39,9 +39,7 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { required, minLength, between } from 'vuelidate/lib/validators'
-// import router from '@/router/index'
 
 export default {
     name: 'Auth',
@@ -62,18 +60,12 @@ export default {
     },
     methods: {
         login() {
-            this.$v.credentials.$touch();
-            if(this.$v.credentials.$error) return this.loading = false
-            this.loading = true;
-            axios.post('http://localhost:7000/auth/', this.credentials).then(res => {
-                this.$session.start();
-                this.$session.set('token', res.data.token);
-                this.$router.push('/');
-            }).catch(e => {
-                this.loading = false;
-                this.msg = 'Wrong username or password';
-                console.log(e);
-              })
+            var me = this;
+            me.$v.credentials.$touch();
+            if(me.$v.credentials.$error) return me.loading = false
+            me.loading = true;
+            me.$store.dispatch('auth/login', me.credentials)
+                .then(() => me.$store.getters['auth/isAuthenticated'] ? me.$router.push('/') : me.msg = 'Wrong username or password')
         }
     }
 

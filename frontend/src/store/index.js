@@ -17,5 +17,6 @@ export default new Vuex.Store({
     signup,
   },
   strict: debug,
-  plugins: debug ? [createLogger()] : [],
+  /** Creating a logger (console) */
+  plugins: debug ? [createLogger()] : [], 
 });

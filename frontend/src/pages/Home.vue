@@ -10,21 +10,10 @@
 import CarouselBar from '@/components/Carousel'
 
 export default {
-  name: 'app',
-  mounted() {
-    this.checkLoggedIn();
-  },
+  name: 'home',
   components:{
     CarouselBar,
-  },
-  methods: {
-    checkLoggedIn(){
-      this.$session.start();
-      if(!this.$session.has('token')){
-        this.$router.push('/login');
-      }      
-    }
-  },
+  }
 }
 </script>
 

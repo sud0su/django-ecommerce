@@ -10,7 +10,7 @@
               </div>
               <div class="column is-7 login-form-wrapper">
                 <div class="column is-12 has-text-right register-btn">
-                  <a class="btn" name="button">Register</a>
+                  <a class="btn" name="button"><router-link to="/register">Register</router-link></a>
                 </div>
                 <div class="column is-12 field-box">
                     <slot />

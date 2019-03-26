@@ -1,3 +1,7 @@
+  <!-- <ul class="navbar" id="navbar">
+    <li><router-link to="/logout">logout</router-link></li>
+    <li><router-link to="/about">about</router-link></li>
+  </ul> -->
 <template>
   <div>
     <nav class="navbar primarynav is-white">
@@ -29,25 +33,34 @@
 
           <div class="navbar-end">
             <div class="navbar-item">
-              <router-link class="button is-white" :to="{name: '#'}" @click.native="open = false">
+              <router-link class="button is-white" to="/">
                 <span class="icon">
                   <i class="fas fa-shopping-cart"></i>
                 </span>
               </router-link>
             </div>
-            <div class="navbar-item">
-              <router-link class="button is-success is-outlined" :to="{name: 'login'}" @click.native="open = false">
-                Login
-              </router-link>
-            </div>
-            
-            <div class="is-divider-vertical" data-content="OR"></div>
 
-            <div class="navbar-item">
-              <router-link class="button is-danger is-outlined" :to="{name: 'login'}" @click.native="open = false">
-                Register
-              </router-link>
+            <div v-if="!isAuthenticated" class="ifconditional">
+              <div class="navbar-item">
+                <router-link class="button is-success is-outlined" to="/login">
+                  Login
+                </router-link>
+              </div>
+              <div class="is-divider-vertical" data-content="OR"></div>
+              <div class="navbar-item">
+                <router-link class="button is-danger is-outlined" to="/register">
+                  Register
+                </router-link>
+              </div>
             </div>
+            <div v-else  class="ifconditional">
+              <div class="navbar-item">
+                <router-link class="button is-success" to="/logout">
+                  Logout
+                </router-link>
+              </div>
+            </div>
+              
           </div>
         </div>
       </div>
@@ -77,12 +90,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
+  name: 'member-navbar',
   data() {
     return {
       open: false
     };
-  }
+  },
+  computed: mapGetters('auth', ['isAuthenticated',]),
 };
 </script>
 
